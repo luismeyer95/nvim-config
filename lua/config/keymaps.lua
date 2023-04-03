@@ -10,14 +10,6 @@ local M = {
       "Open keymaps",
     },
     -- Buffers
-    ["<leader>x"] = { function()
-      local cur_buf = vim.api.nvim_get_current_buf()
-      vim.cmd('bp')
-      local ok, _ = pcall(vim.api.nvim_buf_delete, cur_buf, { force = false })
-      if not ok then
-        vim.cmd('bn')
-      end
-    end, "close buffer" },
     ["<Tab>"] = { '<cmd>BufferLineCycleNext<CR>', "next buffer", opts = { noremap = true, silent = true } },
     ["<S-Tab>"] = { '<cmd>BufferLineCyclePrev<CR>', "prev buffer", opts = { noremap = true, silent = true } },
     -- Neotree
