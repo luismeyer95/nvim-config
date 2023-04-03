@@ -14,6 +14,10 @@ return {
       local lsp_utils = require("plugins.lsp.lsp-utils")
 
       vim.diagnostic.config({
+        virtual_text = {
+          prefix = "●",
+          spacing = 16,
+        },
         signs = true,
         underline = true,
         update_in_insert = true,
