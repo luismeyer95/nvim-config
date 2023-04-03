@@ -10,6 +10,7 @@ return {
                 if vim.v.shell_error == 0 then
                     vim.api.nvim_del_augroup_by_name "DiffviewLazyLoad"
                     vim.schedule(function()
+                        ---@diagnostic disable-next-line: different-requires
                         require("lazy").load { plugins = { "diffview.nvim" } }
                     end)
                 end
