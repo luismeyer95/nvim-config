@@ -11,14 +11,7 @@ local M = {
     },
   },
   keys = {
-
-    { "<C-M-o>", "<cmd>lua require('telescope.builtin').find_files()<cr>" },
-    {
-      "<C-M-p>",
-      "<cmd>lua require('telescope.builtin').builtin(require('telescope.themes').get_dropdown({}))<cr>",
-    },
-    { "<C-g>",   "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
-    { "<C-f>",   "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>" },
+    { "<leader><leader>", "<cmd>Telescope<cr>", "open telescope" }
   },
   opts = function()
     local actions = require("telescope.actions")
@@ -27,7 +20,7 @@ local M = {
       pickers = {
         find_files = { hidden = true },
         live_grep = {
-          additional_args = function(opts)
+          additional_args = function(_)
             return { "--hidden" }
           end,
         },
@@ -35,13 +28,19 @@ local M = {
       defaults = {
         prompt_prefix = " ⬢  ",
         mappings = { i = { ["<esc>"] = actions.close } },
+        layout_strategy = "horizontal",
+        layout_config = {
+          horizontal = {
+            prompt_position = "top",
+          },
+        },
       },
       extensions = {
         fzf = {
-          fuzzy = true,                             -- false will only do exact matching
-          override_generic_sorter = true,           -- override the generic sorter
-          override_file_sorter = true,              -- override the file sorter
-          case_mode = "smart_case",                 -- or "ignore_case" or "respect_case"
+          fuzzy = true,                   -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
           -- the default case_mode is "smart_case"
         },
         ["ui-select"] = {
