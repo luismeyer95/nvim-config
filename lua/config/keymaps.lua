@@ -5,6 +5,7 @@ end
 local M = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
+    ["<leader>xa"] = { "<cmd>wa | qa<cr>", "save all and exit" },
     ["mm"] = {
       "<cmd> Telescope keymaps <CR>",
       "Open keymaps",
