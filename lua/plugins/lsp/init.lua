@@ -41,7 +41,7 @@ return {
       vim.keymap.set("n", "<leader>gi", "<cmd>Telescope lsp_implementations<cr>", bufopts)
       vim.keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<cr>", bufopts)
       vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, bufopts)
-      vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, bufopts)
+      vim.keymap.set("n", "<leader>gS", vim.lsp.buf.signature_help, bufopts)
       vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
       vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
       vim.keymap.set("n", "<leader>wl", function()

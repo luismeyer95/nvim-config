@@ -10,6 +10,11 @@ local M = {
       "<cmd> Telescope keymaps <CR>",
       "Open keymaps",
     },
+    --Resizing
+    ["<M-Up>"] = { "<C-w>+", "increase height" },
+    ["<M-Down>"] = { "<C-w>-", "decrease height" },
+    ["<M-Left>"] = { "<C-w><", "decrease width" },
+    ["<M-Right>"] = { "<C-w>>", "increase width" },
     -- Buffers
     ["<Tab>"] = { '<cmd>BufferLineCycleNext<CR>', "next buffer", opts = { noremap = true, silent = true } },
     ["<S-Tab>"] = { '<cmd>BufferLineCyclePrev<CR>', "prev buffer", opts = { noremap = true, silent = true } },
