@@ -2,33 +2,13 @@ local M = {
     "numToStr/Comment.nvim",
     keys = {
         {
-            "<C-_>",
+            "<leader>/",
             mode = "n",
             "<Plug>(comment_toggle_linewise_current)",
         },
         {
-            "<C-_>",
-            mode = "x",
-            "<Plug>(comment_toggle_linewise_visual)",
-        },
-        {
-            "<C-M-_>",
-            mode = "n",
-            "<Plug>(comment_toggle_blockwise_current)",
-        },
-        {
-            "<C-M-_>",
-            mode = "x",
-            "<Plug>(comment_toggle_blockwise_visual)",
-        },
-        {
-            "<C-/>",
-            mode = "n",
-            "<Plug>(comment_toggle_linewise_current)",
-        },
-        {
-            "<C-/>",
-            mode = "x",
+            "<leader>/",
+            mode = "v",
             "<Plug>(comment_toggle_linewise_visual)",
         },
         {
