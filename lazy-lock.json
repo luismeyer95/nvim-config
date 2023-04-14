@@ -1,5 +1,4 @@
 {
-  "CodeGPT.nvim": { "branch": "master", "commit": "3e1ef218268c38492d074a984a0ca191ceacc730" },
   "Comment.nvim": { "branch": "master", "commit": "a89339ffbee677ab0521a483b6dac7e2e67c907e" },
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "a6355b12a3b7da0aef71f02560e17ff480182b97" },
@@ -23,6 +22,7 @@
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "b8b01c35af7bf7155bb2af762aa68c6c1007c96d" },
   "mason.nvim": { "branch": "main", "commit": "3664448c41717f1c40a42839cbb55c925ea11046" },
   "neo-tree.nvim": { "branch": "v2.x", "commit": "2b2f74828eeb02cf29d6b21aa32eedadadc94ca7" },
+  "neoai.nvim": { "branch": "main", "commit": "3ac19bb1fff96bf8eab220bc382af11db6467eec" },
   "neodev.nvim": { "branch": "main", "commit": "864b35006d3de24c60e44b566de8018f919b13e6" },
   "neotest": { "branch": "master", "commit": "28724010861dbf294f09b9ee1948d2da2823604b" },
   "neotest-rust": { "branch": "main", "commit": "5bb78ad3c1c11a28a2c48af59056455841e6546f" },
