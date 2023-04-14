@@ -1,6 +1,6 @@
 return {
   "simrat39/rust-tools.nvim",
-  dependencies = { "nvim-lspconfig", "hrsh7th/cmp-nvim-lsp" },
+  dependencies = { "hrsh7th/cmp-nvim-lsp", "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" },
   ft = "rust",
   config = function()
     local lspconfig = require "plugins.lsp.lsp-utils"

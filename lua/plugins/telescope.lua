@@ -69,6 +69,7 @@ local M = {
           }),
         },
         frecency = {},
+        neoclip = {}
       },
     }
   end,

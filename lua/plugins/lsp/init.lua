@@ -16,11 +16,9 @@ return {
       vim.diagnostic.config({
         virtual_text = {
           prefix = "●",
-          spacing = 16,
         },
         signs = true,
         underline = true,
-        update_in_insert = true,
       })
 
       ---- sign column

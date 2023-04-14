@@ -26,7 +26,6 @@ local M = {
         end,
       },
       mapping = {
-        ["<C-'>"] = cmp.mapping.abort(),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -71,33 +70,15 @@ local M = {
         { name = "path" },
       },
       formatting = {
-        format = function(entry, vim_item)
-          if vim.tbl_contains({ "path" }, entry.source.name) then
-            local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
-            if icon then
-              vim_item.kind = icon
-              vim_item.kind_hl_group = hl_group
-              return vim_item
-            end
-          end
-          vim_item.kind = (lsp_kinds[vim_item.kind] or "") .. " " .. vim_item.kind
-
-          return vim_item
-        end,
-        -- format = require("lspkind").cmp_format {
-        --     mode = "symbol_text",
-        --     maxwidth = 50,
-        --     ellipsis_char = "...",
-        -- },
+        format = require("lspkind").cmp_format {
+          mode = "symbol_text",
+          maxwidth = 50,
+          ellipsis_char = "...",
+        },
       },
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
-      },
-      experimental = {
-        ghost_text = {
-          hl_group = "LspCodeLens",
-        }
       },
     }
   end,

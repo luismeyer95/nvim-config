@@ -13,4 +13,3 @@ for mode, mode_values in pairs(keymaps) do
 end
 
 vim.cmd('colorscheme rose-pine')
-vim.lsp.set_log_level("debug")
