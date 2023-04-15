@@ -6,9 +6,9 @@ local M = {
     { "nvim-telescope/telescope-ui-select.nvim" },
     {
       "nvim-telescope/telescope-frecency.nvim",
-      lazy = false,
       dependencies = { "kkharji/sqlite.lua" },
     },
+    { "debugloop/telescope-undo.nvim" }
   },
   keys = {
     { "<leader><leader>", "<cmd>Telescope<cr>", "open telescope" }
@@ -80,7 +80,16 @@ local M = {
           }),
         },
         frecency = {},
-        neoclip = {}
+        neoclip = {},
+        undo = {
+          mappings = {
+            n = {
+              ["<cr>"] = require("telescope-undo.actions").yank_additions,
+              ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+              ["<C-cr>"] = require("telescope-undo.actions").restore,
+            },
+          },
+        }
       },
     }
   end,
