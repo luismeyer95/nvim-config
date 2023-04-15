@@ -66,10 +66,10 @@ local M = {
     ["<leader>fr"] = { "<cmd>Telescope frecency<CR>", "toggle frecency" },
     -- Gitsigns
     -- Navigation through hunks
-    ["]c"] = {
+    ["]h"] = {
       function()
         if vim.wo.diff then
-          return "]c"
+          return "]h"
         end
         vim.schedule(function()
           require("gitsigns").next_hunk()
@@ -79,10 +79,10 @@ local M = {
       "Jump to next hunk",
       opts = { expr = true },
     },
-    ["[c"] = {
+    ["[h"] = {
       function()
         if vim.wo.diff then
-          return "[c"
+          return "[h"
         end
         vim.schedule(function()
           require("gitsigns").prev_hunk()
@@ -244,14 +244,8 @@ local M = {
   },
   i = {
     ["jj"] = { "<ESC>", "go to normal mode" },
-    ["<Tab>"] = {
-      function()
-        return vim.fn["codeium#Accept"]()
-      end,
-      "accept codeium completion",
-      opts = { expr = true },
-    },
     -- LuaSnip choices
+    ["<M-Tab>"] = { "<Plug>luasnip-expand-or-jump", "expand or jump" },
     ["<M-n>"] = {
       "<Plug>luasnip-next-choice",
       "next choice",
@@ -261,7 +255,7 @@ local M = {
       "prev choice",
     },
     -- Completion
-    ["<C-CR>"] = {
+    ["<S-CR>"] = {
       function()
         local cmp = require("cmp")
         if cmp.visible() then
