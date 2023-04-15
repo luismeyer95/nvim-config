@@ -222,6 +222,10 @@ local M = {
       end,
       "lsp formatting",
     },
+    -- NeoAI
+    ["<leader>ai"] = {
+      "<cmd>NeoAI<CR>", "toggle AI window",
+    },
     -- Debugger
     ["<leader>db"] = { function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint (F9)" },
     ["<leader>dB"] = { function() require("dap").clear_breakpoints() end, desc = "Clear Breakpoints" },
@@ -278,6 +282,11 @@ local M = {
     ["<C-l>"] = { "<cmd>wincmd l<cr>" },
     ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" }
   },
+  v = {
+    ["<leader>ai"] = {
+      "<cmd>NeoAIContext<CR>", "toggle AI window (visual context)",
+    },
+  }
 }
 
 return M
