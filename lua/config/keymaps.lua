@@ -49,6 +49,7 @@ local M = {
     -- Telescope
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
+    ["<leader>gff"] = { "<cmd> Telescope find_files search_dirs=~ <CR>", "find files (home)" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
     ["<leader>fg"] = { "<cmd> Telescope git_files <CR>", "git files" },
