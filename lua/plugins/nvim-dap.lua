@@ -26,18 +26,36 @@ return {
     },
   },
   config = function(_, opts)
-    local dap               = require('dap')
+    local dap = require('dap')
+
+    -- Setup signs
+
+    local signs = {
+      { name = "DapStopped",             text = "", texthl = "DiagnosticWarn" },
+      { name = "DapBreakpoint",          text = "", texthl = "DiagnosticInfo" },
+      { name = "DapBreakpointRejected",  text = "", texthl = "DiagnosticError" },
+      { name = "DapBreakpointCondition", text = "", texthl = "DiagnosticInfo" },
+      { name = "DapLogPoint",            text = ".>",  texthl = "DiagnosticInfo" },
+    }
+
+    for _, sign in ipairs(signs) do
+      vim.fn.sign_define(sign.name, sign)
+    end
+
+    -- Setup adapters
 
     dap.adapters.lldb       = {
       type = 'executable',
       command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
-      name = 'lldb-vscode',
+      name = 'lldb',
     }
+
+    -- Setup configurations
 
     dap.configurations.rust = {
       {
         name = "Rust debug",
-        type = "lldb-vscode",
+        type = "lldb",
         request = "launch",
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
