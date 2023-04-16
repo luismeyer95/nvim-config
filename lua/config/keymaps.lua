@@ -25,10 +25,10 @@ local M = {
     -- Save + format
     ["<leader>sf"] = { "<cmd>lua vim.lsp.buf.format { async = true }<cr> <cmd>w<cr>", "format + save" },
     -- Better window navigation
-    ["<leader>h"] = { "<C-w>h", "go left", opts = { noremap = true } },
-    ["<leader>j"] = { "<C-w>j", "go down", opts = { noremap = true } },
-    ["<leader>k"] = { "<C-w>k", "go up", opts = { noremap = true } },
-    ["<leader>l"] = { "<C-w>l", "go right", opts = { noremap = true } },
+    ["<M-h>"] = { "<C-w>h", "go left", opts = { noremap = true } },
+    ["<M-j>"] = { "<C-w>j", "go down", opts = { noremap = true } },
+    ["<M-k>"] = { "<C-w>k", "go up", opts = { noremap = true } },
+    ["<M-l>"] = { "<C-w>l", "go right", opts = { noremap = true } },
     -- Leap cross-window
     ["<leader>gs"] = {
       -- Searching in all windows (including the current one) on the tab page.
