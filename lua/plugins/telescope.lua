@@ -4,10 +4,6 @@ local M = {
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },
-    {
-      "nvim-telescope/telescope-frecency.nvim",
-      dependencies = { "kkharji/sqlite.lua" },
-    },
     { "debugloop/telescope-undo.nvim" }
   },
   keys = {
@@ -79,7 +75,6 @@ local M = {
             -- even more opts
           }),
         },
-        frecency = {},
         neoclip = {},
         undo = {
           mappings = {

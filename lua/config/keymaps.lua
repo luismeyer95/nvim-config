@@ -4,31 +4,27 @@ end
 
 local M = {
   n = {
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["<leader>xa"] = { "<cmd>wa | qa<cr>", "save all and exit" },
-    ["<leader>cdf"] = { "<cmd>cd %:p:h<cr>", "change directory" },
-    ["mm"] = {
-      "<cmd> Telescope keymaps <CR>",
-      "Open keymaps",
-    },
+    [";"] = { ":", "Enter command mode", opts = { nowait = true } },
+    ["<leader>xa"] = { "<cmd>wa | qa<cr>", "Save all and exit" },
+    ["<leader>cdf"] = { "<cmd>cd %:p:h<cr>", "Change directory to current file" },
     --Resizing
-    ["<M-Up>"] = { "<C-w>+", "increase height" },
-    ["<M-Down>"] = { "<C-w>-", "decrease height" },
-    ["<M-Left>"] = { "<C-w><", "decrease width" },
-    ["<M-Right>"] = { "<C-w>>", "increase width" },
+    ["<M-Up>"] = { "<C-w>+", "Increase height" },
+    ["<M-Down>"] = { "<C-w>-", "Decrease height" },
+    ["<M-Left>"] = { "<C-w><", "Decrease width" },
+    ["<M-Right>"] = { "<C-w>>", "Increase width" },
     -- Buffers
-    ["<Tab>"] = { '<cmd>BufferLineCycleNext<CR>', "next buffer", opts = { noremap = true, silent = true } },
-    ["<S-Tab>"] = { '<cmd>BufferLineCyclePrev<CR>', "prev buffer", opts = { noremap = true, silent = true } },
+    ["<Tab>"] = { '<cmd>BufferLineCycleNext<CR>', "Next buffer", opts = { noremap = true, silent = true } },
+    ["<S-Tab>"] = { '<cmd>BufferLineCyclePrev<CR>', "Prev buffer", opts = { noremap = true, silent = true } },
     -- Neotree
-    ["<leader>st"] = { "<cmd> Neotree toggle <CR>", "toggle neotree" },
-    ["<leader>ft"] = { "<cmd> Neotree <CR>", "focus neotree" },
+    ["<leader>st"] = { "<cmd> Neotree toggle <CR>", "Toggle neotree" },
+    ["<leader>ft"] = { "<cmd> Neotree <CR>", "Focus neotree" },
     -- Save + format
-    ["<leader>sf"] = { "<cmd>lua vim.lsp.buf.format { async = true }<cr> <cmd>w<cr>", "format + save" },
+    ["<leader>sf"] = { "<cmd>lua vim.lsp.buf.format { async = true }<cr> <cmd>w<cr>", "Format + save" },
     -- Better window navigation
-    ["<M-h>"] = { "<C-w>h", "go left", opts = { noremap = true } },
-    ["<M-j>"] = { "<C-w>j", "go down", opts = { noremap = true } },
-    ["<M-k>"] = { "<C-w>k", "go up", opts = { noremap = true } },
-    ["<M-l>"] = { "<C-w>l", "go right", opts = { noremap = true } },
+    ["<M-h>"] = { "<C-w>h", "Go left", opts = { noremap = true } },
+    ["<M-j>"] = { "<C-w>j", "Go down", opts = { noremap = true } },
+    ["<M-k>"] = { "<C-w>k", "Go up", opts = { noremap = true } },
+    ["<M-l>"] = { "<C-w>l", "Go right", opts = { noremap = true } },
     -- Leap cross-window
     ["<leader>gs"] = {
       -- Searching in all windows (including the current one) on the tab page.
@@ -39,31 +35,29 @@ local M = {
           end, vim.api.nvim_tabpage_list_wins(0)),
         }
       end,
-      "leap (all windows)",
+      "Leap (all windows)",
     },
     -- Diff view
-    ["<leader>vdf"] = { "<cmd>DiffviewOpen HEAD -- %<CR>", "view file diff" },
-    ["<leader>vda"] = { "<cmd>DiffviewOpen<CR>", "view diff (all files)" },
-    ["<leader>vhf"] = { "<cmd>DiffviewFileHistory %<CR>", "view file history" },
-    ["<leader>vha"] = { "<cmd>DiffviewFileHistory<CR>", "view history (all files)" },
+    ["<leader>vdf"] = { "<cmd>DiffviewOpen HEAD -- %<CR>", "View file diff" },
+    ["<leader>vda"] = { "<cmd>DiffviewOpen<CR>", "View diff (all files)" },
+    ["<leader>vhf"] = { "<cmd>DiffviewFileHistory %<CR>", "View file history" },
+    ["<leader>vha"] = { "<cmd>DiffviewFileHistory<CR>", "View history (all files)" },
     -- Telescope
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-    ["<leader>gff"] = { "<cmd> Telescope find_files search_dirs=~ <CR>", "find files (home)" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
-    ["<leader>fg"] = { "<cmd> Telescope git_files <CR>", "git files" },
-    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
-    ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
-    ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-    ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
-    ["<leader>fs"] = { "<cmd> Telescope grep_string <CR>", "grep string" },
+    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>gff"] = { "<cmd> Telescope find_files search_dirs=~ <CR>", "Find files (home)" },
+    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
+    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+    ["<leader>fg"] = { "<cmd> Telescope git_files <CR>", "Git files" },
+    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+    ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Find help" },
+    ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
+    ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "Show keys" },
+    ["<leader>fs"] = { "<cmd> Telescope grep_string <CR>", "Grep string" },
     -- Telescope undo
-    ["<leader>ut"] = { "<cmd>Telescope undo<CR>", "toggle undotree" },
+    ["<leader>ut"] = { "<cmd>Telescope undo<CR>", "Toggle undotree" },
     -- Telescope clipboard
-    ["<leader>cb"] = { "<cmd>Telescope neoclip<CR>", "toggle clipboard" },
-    -- Telescope frecency
-    ["<leader>fr"] = { "<cmd>Telescope frecency<CR>", "toggle frecency" },
+    ["<leader>cb"] = { "<cmd>Telescope neoclip<CR>", "Toggle clipboard" },
     -- Gitsigns
     -- Navigation through hunks
     ["]h"] = {
@@ -134,7 +128,7 @@ local M = {
       function()
         require("Comment.api").toggle.linewise.current()
       end,
-      "toggle comment",
+      "Toggle comment",
     },
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -145,87 +139,55 @@ local M = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
     -- LSP config
-    ["gD"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
-      "lsp declaration",
-    },
-    ["gd"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
-      "lsp definition",
-    },
-    ["K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      "lsp hover",
-    },
-    ["gi"] = {
-      function()
-        vim.lsp.buf.implementation()
-      end,
-      "lsp implementation",
-    },
-    ["<leader>D"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      "lsp definition type",
-    },
+    ["<leader>gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP declaration" },
+    ["<leader>gd"] = { "<cmd>Telescope lsp_definitions<CR>", "LSP definition" },
+    ["K"] = { '<cmd>lua vim.lsp.buf.hover()<CR>', "LSP hover", },
+    ["<leader>gi"] = { "<cmd>Telescope lsp_implementations<CR>", "LSP implementations" },
+    ["<leader>gt"] = { "<cmd>Telescope lsp_type_definitions<CR>", "LSP type definition" },
+    ["<leader>gr"] = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
+    ["<leader>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add workspace folder" },
+    ["<leader>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove workspace folder" },
+    ["<leader>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List workspace folders" },
     ["<leader>rn"] = {
       function()
         vim.lsp.buf.rename()
       end,
-      "lsp rename",
+      "LSP rename",
     },
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
       end,
-      "lsp code_action",
+      "LSP code_action",
     },
-    ["gr"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
-      "lsp references",
-    },
-    ["<leader>f"] = {
-      function()
-        vim.diagnostic.open_float()
-      end,
-      "floating diagnostic",
-    },
+    ["<leader>f"] = { "vim.diagnostic.open_float()", "Floating diagnostic" },
     ["[d"] = {
       function()
         vim.diagnostic.goto_prev()
       end,
-      "goto prev",
+      "Go to previous diagnostic",
     },
     ["d]"] = {
       function()
         vim.diagnostic.goto_next()
       end,
-      "goto_next",
+      "Go to next diagnostic",
     },
     ["<leader>q"] = {
       function()
         vim.diagnostic.setloclist()
       end,
-      "diagnostic setloclist",
+      "Diagnostic setloclist",
     },
     ["<leader>fm"] = {
       function()
         vim.lsp.buf.format { async = true }
       end,
-      "lsp formatting",
+      "LSP formatting",
     },
     -- NeoAI
     ["<leader>ai"] = {
-      "<cmd>NeoAI<CR>", "toggle AI window",
+      "<cmd>NeoAI<CR>", "Toggle AI window",
     },
     -- Debugger
     ["<leader>db"] = { function() require("dap").toggle_breakpoint() end, "Toggle Breakpoint" },
@@ -243,19 +205,19 @@ local M = {
     ["<leader>dh"] = { function() require("dap.ui.widgets").hover() end, "Debugger Hover" },
   },
   i = {
-    ["jj"] = { "<ESC>", "go to normal mode" },
+    ["jj"] = { "<ESC>", "Go to normal mode" },
     -- LuaSnip choices
-    ["<M-Tab>"] = { "<Plug>luasnip-expand-or-jump", "expand or jump" },
+    ["<M-Tab>"] = { "<Plug>luasnip-expand-or-jump", "Expand or jump (luasnip)" },
     ["<M-n>"] = {
       "<Plug>luasnip-next-choice",
-      "next choice",
+      "Next choice (luasnip)",
     },
     ["<M-p>"] = {
       "<Plug>luasnip-prev-choice",
-      "prev choice",
+      "Prev choice (luasnip)",
     },
     -- Completion
-    ["<S-CR>"] = {
+    ["<M-l>"] = {
       function()
         local cmp = require("cmp")
         if cmp.visible() then
@@ -265,21 +227,23 @@ local M = {
           return vim.fn["codeium#Accept"]()
         end
       end,
-      opts = { expr = true }
+      "Codeium complete",
+      opts = { expr = true, }
     },
   },
   t = {
     -- Toggleterm
-    ["jj"] = { [[<C-\><C-n>]], "escape terminal mode", { buffer = 0 } },
-    ["<C-h>"] = { "<cmd>wincmd h<cr>" },
-    ["<C-j>"] = { "<cmd>wincmd j<cr>" },
-    ["<C-k>"] = { "<cmd>wincmd k<cr>" },
-    ["<C-l>"] = { "<cmd>wincmd l<cr>" },
-    ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" }
+    ["jj"] = { [[<C-\><C-n>]], "Escape terminal mode", { buffer = 0 } },
+    ["<C-h>"] = { "<cmd>wincmd h<cr>", "Go left" },
+    ["<C-j>"] = { "<cmd>wincmd j<cr>", "Go down" },
+    ["<C-k>"] = { "<cmd>wincmd k<cr>", "Go up" },
+    ["<C-l>"] = { "<cmd>wincmd l<cr>", "Go right" },
+    ["<C-x>"] = { termcodes "<C-\\><C-N>", "Escape terminal mode" }
   },
   v = {
+    [";"] = { ":", "Enter command mode", opts = { nowait = true } },
     ["<leader>ai"] = {
-      "<cmd>NeoAIContext<CR>", "toggle AI window (visual context)",
+      "<cmd>NeoAIContext<CR>", "Toggle AI window (visual context)",
     },
   }
 }
