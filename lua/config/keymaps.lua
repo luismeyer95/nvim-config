@@ -25,6 +25,10 @@ local M = {
     ["<M-j>"] = { "<C-w>j", "Go down", opts = { noremap = true } },
     ["<M-k>"] = { "<C-w>k", "Go up", opts = { noremap = true } },
     ["<M-l>"] = { "<C-w>l", "Go right", opts = { noremap = true } },
+    ["<C-h>"] = { "<C-w>h", "Go left", opts = { noremap = true } },
+    ["<C-j>"] = { "<C-w>j", "Go down", opts = { noremap = true } },
+    ["<C-k>"] = { "<C-w>k", "Go up", opts = { noremap = true } },
+    ["<C-l>"] = { "<C-w>l", "Go right", opts = { noremap = true } },
     -- Leap cross-window
     ["<leader>gs"] = {
       -- Searching in all windows (including the current one) on the tab page.
@@ -160,7 +164,7 @@ local M = {
       end,
       "LSP code_action",
     },
-    ["<leader>f"] = { "vim.diagnostic.open_float()", "Floating diagnostic" },
+    ["<leader>fd"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Floating diagnostic" },
     ["[d"] = {
       function()
         vim.diagnostic.goto_prev()
@@ -203,6 +207,9 @@ local M = {
     ["<leader>dR"] = { function() require("dap").repl.toggle() end, "Toggle REPL" },
     ["<leader>du"] = { function() require("dapui").toggle() end, "Toggle Debugger UI" },
     ["<leader>dh"] = { function() require("dap.ui.widgets").hover() end, "Debugger Hover" },
+
+    -- Neotest
+    ["<leader>tw"] = { function() require("neotest").summary.toggle() end, "Toggle Neotest" },
   },
   i = {
     ["jj"] = { "<ESC>", "Go to normal mode" },
@@ -217,7 +224,7 @@ local M = {
       "Prev choice (luasnip)",
     },
     -- Completion
-    ["<M-l>"] = {
+    ["<C-l>"] = {
       function()
         local cmp = require("cmp")
         if cmp.visible() then

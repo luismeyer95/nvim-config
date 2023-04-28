@@ -20,9 +20,18 @@ return {
     { "<leader>as", desc = "summarize text" },
     { "<leader>ag", desc = "generate git message" },
   },
-  config = function()
-    require("neoai").setup({
-      -- Options go here
-    })
-  end,
+  opts = {
+    models = {
+      {
+        name = "openai",
+        model = "gpt-4",
+        params = nil,
+      },
+      {
+        name = "openai",
+        model = "gpt-3.5-turbo",
+        params = nil,
+      },
+    },
+  }
 }
