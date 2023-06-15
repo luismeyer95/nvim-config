@@ -207,16 +207,18 @@ local M = {
     ["<leader>dR"] = { function() require("dap").repl.toggle() end, "Toggle REPL" },
     ["<leader>du"] = { function() require("dapui").toggle() end, "Toggle Debugger UI" },
     ["<leader>dh"] = { function() require("dap.ui.widgets").hover() end, "Debugger Hover" },
-
     -- Neotest
     ["<leader>tw"] = { function() require("neotest").summary.toggle() end, "Toggle Neotest" },
-
     -- Ng
     ["<leader>at"] = { function() require("ng").goto_template_for_component() end, "Go to template (Angular)", opts = {
       noremap = true } },
     ["<leader>ac"] = { function() require("ng").goto_component_with_template_file() end, "Go to component (Angular)", opts = {
       noremap = true } },
-
+    -- Go to config
+    ["<leader>cf"] = { function()
+      local config_path = vim.fn.stdpath('config')
+      vim.cmd('cd ' .. config_path)
+    end, "Go to Neovim config" }
   },
   i = {
     ["jj"] = { "<ESC>", "Go to normal mode" },
