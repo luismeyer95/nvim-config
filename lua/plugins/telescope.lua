@@ -33,6 +33,7 @@ local M = {
         },
       },
       defaults = {
+        cache_picker = true,
         vimgrep_arguments = {
           "rg",
           "-L",

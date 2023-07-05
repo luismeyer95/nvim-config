@@ -57,6 +57,7 @@ local M = {
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Find help" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
     ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "Show keys" },
+    ["<leader>tr"] = { "<cmd> Telescope resume <CR>", "Resume telescope search" },
     ["<leader>fs"] = { "<cmd> Telescope grep_string <CR>", "Grep string" },
     -- Telescope undo
     ["<leader>ut"] = { "<cmd>Telescope undo<CR>", "Toggle undotree" },
@@ -144,7 +145,13 @@ local M = {
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
     -- LSP config
     ["<leader>gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP declaration" },
-    ["<leader>gd"] = { "<cmd>Telescope lsp_definitions<CR>", "LSP definition" },
+    ["<leader>gd"] = { function()
+      if vim.bo.filetype == 'cs' then
+        require('omnisharp_extended').telescope_lsp_definitions()
+      else
+        require('telescope.builtin').lsp_definitions()
+      end
+    end, "LSP definition" },
     ["K"] = { '<cmd>lua vim.lsp.buf.hover()<CR>', "LSP hover", },
     ["<leader>gi"] = { "<cmd>Telescope lsp_implementations<CR>", "LSP implementations" },
     ["<leader>gt"] = { "<cmd>Telescope lsp_type_definitions<CR>", "LSP type definition" },

@@ -7,6 +7,7 @@ vim.g.mapleader = " "
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false
 vim.opt.scrolloff = 15
+vim.opt.cursorline = true
 
 vim.opt.clipboard = "unnamedplus"
 -- vim.opt.cursorline = true
