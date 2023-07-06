@@ -43,15 +43,6 @@ return {
         end,
       })
 
-      -- lspconfig.tsserver.setup({
-      --   on_attach = function(client, bufnr)
-      --     lsp_utils.on_attach(client, bufnr)
-      --     -- WARNING: this disables document formatting to not conflict with prettier
-      --     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-      --   end,
-      --   capabilities = lsp_utils.capabilities,
-      -- })
-
       lspconfig.lua_ls.setup({
         settings = {
           Lua = {

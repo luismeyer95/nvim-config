@@ -1,7 +1,14 @@
 return {
   "folke/flash.nvim",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    modes = {
+      char = {
+        -- disabling f/F/t/T search due to conflict with ;
+        keys = {}
+      }
+    }
+  },
   keys = {
     {
       "s",
