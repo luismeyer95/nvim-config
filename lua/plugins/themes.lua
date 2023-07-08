@@ -25,5 +25,8 @@ return {
       options = { transparent = true } }
   },
   { "folke/tokyonight.nvim", name = "tokyonight", lazy = false },
-  { "RRethy/nvim-base16",    lazy = false },
+  {
+    "RRethy/nvim-base16",
+    lazy = false,
+  },
 }
