@@ -4,7 +4,17 @@ return {
   event = "VimEnter",
   config = function()
     require("lualine").setup {
-
+      sections = {
+        lualine_b = {
+          {
+            function()
+              local key = require("grapple").key()
+              return "  [" .. key .. "]"
+            end,
+            cond = require("grapple").exists,
+          }
+        }
+      }
     }
   end
 }
