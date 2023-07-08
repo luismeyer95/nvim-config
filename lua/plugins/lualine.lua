@@ -5,7 +5,8 @@ return {
   config = function()
     require("lualine").setup {
       sections = {
-        lualine_b = {
+        lualine_c = {
+          "filename",
           {
             function()
               local key = require("grapple").key()
