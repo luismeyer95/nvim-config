@@ -77,6 +77,7 @@ local M = {
           }),
         },
         neoclip = {},
+        notify = {},
         undo = {
           mappings = {
             n = {
