@@ -20,6 +20,10 @@ return {
     { "<leader>as", desc = "summarize text" },
     { "<leader>ag", desc = "generate git message" },
   },
+  config = function(_, opts)
+    vim.treesitter.language.register('markdown', 'neoai-output')
+    require("neoai").setup(opts)
+  end,
   opts = {
     models = {
       {
