@@ -5,7 +5,8 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
-      "Hoffs/omnisharp-extended-lsp.nvim"
+      "Hoffs/omnisharp-extended-lsp.nvim",
+      { "folke/neodev.nvim", opts = { setup_jsonls = false } },
     },
     config = function(_, _)
       local utils = require("utils")
@@ -30,6 +31,7 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
 
+
       mason_lspconfig.setup({
         ensure_installed = utils.lsp_servers,
       })
@@ -44,10 +46,15 @@ return {
       })
 
       lspconfig.lua_ls.setup({
+        on_attach = lsp_utils.on_attach,
+        capabilities = lsp_utils.capabilities,
         settings = {
           Lua = {
             diagnostics = {
               globals = { 'vim' }
+            },
+            completion = {
+              callSnippet = "Replace"
             }
           }
         }

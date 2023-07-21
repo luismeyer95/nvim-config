@@ -44,18 +44,23 @@ return {
 
     -- Setup adapters
 
-    dap.adapters.lldb       = {
+    dap.adapters.lldb    = {
       type = 'executable',
       command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
       name = 'lldb',
     }
 
-    dap.adapters.coreclr    = {
+    dap.adapters.coreclr = {
       type = 'executable',
       -- TODO: replace with real command
       command = '/path/to/dotnet/netcoredbg/netcoredbg',
       args = { '--interpreter=vscode' }
     }
+
+
+    dap.adapters.nlua       = function(callback, config)
+      callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+    end
 
     -- Setup configurations
 
@@ -83,6 +88,14 @@ return {
           return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
         end,
       },
+    }
+
+    dap.configurations.lua  = {
+      {
+        type = 'nlua',
+        request = 'attach',
+        name = "Attach to running Neovim instance",
+      }
     }
   end
 }
