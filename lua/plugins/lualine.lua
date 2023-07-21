@@ -5,7 +5,22 @@ return {
   opts = {
     sections = {
       lualine_c = {
-        "filename",
+        {
+          function()
+            return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
+          end,
+          color = "Directory",
+          icon = '',
+        },
+        {
+          'filetype',
+          separator = '',
+          icon_only = true,
+        },
+        {
+          "filename",
+          path = 1,
+        },
         {
           function()
             local key = require("grapple").key()
