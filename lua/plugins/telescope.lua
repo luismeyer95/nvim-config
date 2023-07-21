@@ -31,6 +31,15 @@ local M = {
             return { "--hidden" }
           end,
         },
+        buffers = {
+          show_all_buffers = true,
+          sort_mru = true,
+          mappings = {
+            n = {
+              ["dd"] = "delete_buffer",
+            },
+          },
+        }
       },
       defaults = {
         cache_picker = true,
