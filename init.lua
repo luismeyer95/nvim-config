@@ -12,4 +12,4 @@ for mode, mode_values in pairs(keymaps) do
   end
 end
 
-vim.cmd("colorscheme dark-apprentice")
+vim.cmd("colorscheme rose-pine")

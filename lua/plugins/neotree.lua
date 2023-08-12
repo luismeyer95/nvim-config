@@ -13,7 +13,4 @@ return {
       hijack_netrw_behavior = "open_default",
     }
   },
-  config = function(_, opts)
-    require("neo-tree").setup(opts)
-  end
 }
