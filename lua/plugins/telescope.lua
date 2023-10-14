@@ -4,6 +4,7 @@ local M = {
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },
+    { "nvim-telescope/telescope-file-browser.nvim" },
     { "debugloop/telescope-undo.nvim" }
   },
   keys = {
@@ -86,7 +87,8 @@ local M = {
           }),
         },
         neoclip = {},
-        notify = {},
+        -- notify = {},
+        file_browser = {},
         undo = {
           mappings = {
             n = {
