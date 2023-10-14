@@ -1,7 +1,6 @@
 return {
   "mfussenegger/nvim-dap",
-  enabled = vim.fn.has "win32" == 0,
-  lazy = true,
+  lazy = false,
   dependencies = {
     {
       "jay-babu/mason-nvim-dap.nvim",
@@ -44,27 +43,26 @@ return {
 
     -- Setup adapters
 
-    dap.adapters.lldb    = {
+    dap.adapters.lldb        = {
       type = 'executable',
       command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
       name = 'lldb',
     }
 
-    dap.adapters.coreclr = {
+    dap.adapters.coreclr     = {
       type = 'executable',
       -- TODO: replace with real command
       command = '/path/to/dotnet/netcoredbg/netcoredbg',
       args = { '--interpreter=vscode' }
     }
 
-
-    dap.adapters.nlua       = function(callback, config)
+    dap.adapters.nlua        = function(callback, config)
       callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
     end
 
     -- Setup configurations
 
-    dap.configurations.rust = {
+    dap.configurations.rust  = {
       {
         name = "Rust debug",
         type = "lldb",
@@ -79,7 +77,7 @@ return {
       },
     }
 
-    dap.configurations.cs   = {
+    dap.configurations.cs    = {
       {
         type = "coreclr",
         name = "launch - netcoredbg",
@@ -90,7 +88,7 @@ return {
       },
     }
 
-    dap.configurations.lua  = {
+    dap.configurations.lua   = {
       {
         type = 'nlua',
         request = 'attach',
