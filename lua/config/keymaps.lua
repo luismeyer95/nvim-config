@@ -199,7 +199,7 @@ local M = {
     },
     -- NeoAI
     ["<leader>ai"] = {
-      "<cmd>NeoAI<CR>", "Toggle AI window",
+      "<cmd>ChatGPT<CR>", "Toggle AI window",
     },
     -- Debugger
     ["<leader>db"] = { function() require("dap").toggle_breakpoint() end, "Toggle Breakpoint" },
@@ -226,7 +226,12 @@ local M = {
     ["<leader>cf"] = { function()
       local config_path = vim.fn.stdpath('config')
       vim.cmd('cd ' .. config_path)
-    end, "Go to Neovim config" }
+    end, "Go to Neovim config" },
+    -- Go to plugin files
+    ["<leader>cp"] = { function()
+      local data_path = vim.fn.stdpath('data')
+      vim.cmd('cd ' .. data_path .. '/lazy')
+    end, "Go to plugin files" }
   },
   i = {
     ["jj"] = { "<ESC>", "Go to normal mode" },
