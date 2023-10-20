@@ -266,11 +266,6 @@ local M = {
   },
   v = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
-    ["<leader>ai"] = {
-      -- `:` instead of <cmd> required here in order to auto-insert visual selection marks
-      ":NeoAIContext<cr>", "Toggle AI window (visual context)",
-      opts = { noremap = true, }
-    },
   }
 }
 
