@@ -9,9 +9,13 @@ local M = {
     ["<leader>cdf"] = { "<cmd>cd %:p:h<cr>", "Change directory to current file" },
     --Resizing
     ["<M-Up>"] = { "<C-w>+", "Increase height" },
+    ["<C-k>"] = { "<C-w>+", "Increase height" },
     ["<M-Down>"] = { "<C-w>-", "Decrease height" },
+    ["<C-j>"] = { "<C-w>-", "Decrease height" },
     ["<M-Left>"] = { "<C-w><", "Decrease width" },
+    ["<C-h>"] = { "<C-w><", "Decrease width" },
     ["<M-Right>"] = { "<C-w>>", "Increase width" },
+    ["<C-l>"] = { "<C-w>>", "Increase width" },
     -- Buffers
     ["<Tab>"] = { '<cmd>BufferLineCycleNext<CR>', "Next buffer", opts = { noremap = true, silent = true } },
     ["<S-Tab>"] = { '<cmd>BufferLineCyclePrev<CR>', "Prev buffer", opts = { noremap = true, silent = true } },
@@ -19,16 +23,12 @@ local M = {
     ["<leader>st"] = { "<cmd> Neotree toggle <CR>", "Toggle neotree" },
     ["<leader>ft"] = { "<cmd> Neotree <CR>", "Focus neotree" },
     -- Save + format
-    ["<leader>sf"] = { "<cmd>lua vim.lsp.buf.format { async = true }<cr> <cmd>w<cr>", "Format + save" },
+    ["<leader>sf"] = { "<cmd>lua vim.lsp.buf.format { async = false }<cr> <cmd>w<cr>", "Format + save" },
     -- Better window navigation
-    ["<M-h>"] = { "<C-w>h", "Go left", opts = { noremap = true } },
-    ["<M-j>"] = { "<C-w>j", "Go down", opts = { noremap = true } },
-    ["<M-k>"] = { "<C-w>k", "Go up", opts = { noremap = true } },
-    ["<M-l>"] = { "<C-w>l", "Go right", opts = { noremap = true } },
-    ["<C-h>"] = { "<C-w>h", "Go left", opts = { noremap = true } },
-    ["<C-j>"] = { "<C-w>j", "Go down", opts = { noremap = true } },
-    ["<C-k>"] = { "<C-w>k", "Go up", opts = { noremap = true } },
-    ["<C-l>"] = { "<C-w>l", "Go right", opts = { noremap = true } },
+    ["<leader>wh"] = { "<C-w>h", "Go left", opts = { noremap = true } },
+    ["<leader wj"] = { "<C-w>j", "Go down", opts = { noremap = true } },
+    ["<leader>wk"] = { "<C-w>k", "Go up", opts = { noremap = true } },
+    ["<leader>wl"] = { "<C-w>l", "Go right", opts = { noremap = true } },
     -- Leap cross-window
     ["<leader>gs"] = {
       -- Searching in all windows (including the current one) on the tab page.
@@ -158,8 +158,6 @@ local M = {
     ["<leader>gt"] = { "<cmd>Telescope lsp_type_definitions<CR>", "LSP type definition" },
     ["<leader>gr"] = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
     ["<leader>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add workspace folder" },
-    ["<leader>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove workspace folder" },
-    ["<leader>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List workspace folders" },
     ["<leader>rn"] = {
       function()
         vim.lsp.buf.rename()
