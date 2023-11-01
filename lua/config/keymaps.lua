@@ -29,6 +29,10 @@ local M = {
     ["<leader wj"] = { "<C-w>j", "Go down", opts = { noremap = true } },
     ["<leader>wk"] = { "<C-w>k", "Go up", opts = { noremap = true } },
     ["<leader>wl"] = { "<C-w>l", "Go right", opts = { noremap = true } },
+    ["<leader>wh"] = { "<C-w>h", "Go left", opts = { noremap = true } },
+    ["<leader>wj"] = { "<C-w>j", "Go down", opts = { noremap = true } },
+    ["<leader>wk"] = { "<C-w>k", "Go up", opts = { noremap = true } },
+    ["<leader>wl"] = { "<C-w>l", "Go right", opts = { noremap = true } },
     -- Leap cross-window
     ["<leader>gs"] = {
       -- Searching in all windows (including the current one) on the tab page.
