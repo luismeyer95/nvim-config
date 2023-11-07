@@ -43,26 +43,25 @@ return {
 
     -- Setup adapters
 
-    dap.adapters.lldb        = {
+    dap.adapters.lldb       = {
       type = 'executable',
       command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
       name = 'lldb',
     }
 
-    dap.adapters.coreclr     = {
+    dap.adapters.coreclr    = {
       type = 'executable',
-      -- TODO: replace with real command
-      command = '/path/to/dotnet/netcoredbg/netcoredbg',
+      command = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg"),
       args = { '--interpreter=vscode' }
     }
 
-    dap.adapters.nlua        = function(callback, config)
+    dap.adapters.nlua       = function(callback, config)
       callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
     end
 
     -- Setup configurations
 
-    dap.configurations.rust  = {
+    dap.configurations.rust = {
       {
         name = "Rust debug",
         type = "lldb",
@@ -77,18 +76,27 @@ return {
       },
     }
 
-    dap.configurations.cs    = {
+    dap.configurations.cs   = {
       {
         type = "coreclr",
         name = "launch - netcoredbg",
         request = "launch",
         program = function()
-          return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-        end,
+          return coroutine.create(function(coro)
+            local picker = require("utils.option-picker").option_picker
+            picker("Select Project",
+              { "bash", "-c", "find . -name \"*.csproj\" -exec dirname {} \\;" },
+              function(project)
+                print("Selected project: " .. project)
+                picker("Select DLL", { "bash", "-c", "find " .. project .. " -name \"*.dll\"" },
+                  function(dll) coroutine.resume(coro, dll) end)
+              end)
+          end)
+        end
       },
     }
 
-    dap.configurations.lua   = {
+    dap.configurations.lua  = {
       {
         type = 'nlua',
         request = 'attach',

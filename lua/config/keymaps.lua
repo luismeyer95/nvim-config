@@ -54,6 +54,11 @@ local M = {
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>gff"] = { "<cmd> Telescope find_files search_dirs=~ <CR>", "Find files (home)" },
+    ["<leader>eff"] = { function()
+      require("utils.option-picker").parent_dir_picker(function(dir)
+        require("telescope.builtin").find_files({ cwd = dir })
+      end)
+    end, "Find files (expanded)" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>fg"] = { "<cmd> Telescope git_files <CR>", "Git files" },

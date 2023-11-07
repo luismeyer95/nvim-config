@@ -6,7 +6,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
       "Hoffs/omnisharp-extended-lsp.nvim",
-      { "folke/neodev.nvim", opts = { setup_jsonls = false } },
+      "folke/neodev.nvim"
     },
     config = function(_, _)
       local utils = require("utils")

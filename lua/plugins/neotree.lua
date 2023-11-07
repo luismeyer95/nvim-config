@@ -2,6 +2,7 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
   lazy = false,
+  -- enabled = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
@@ -11,6 +12,8 @@ return {
     filesystem = {
       group_empty_dirs = false,
       hijack_netrw_behavior = "open_default",
-    }
+    },
+    log_level = "trace",
+    log_to_file = true
   },
 }
