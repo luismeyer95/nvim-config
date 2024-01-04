@@ -17,8 +17,8 @@ local M = {
     ["<M-Right>"] = { "<C-w>>", "Increase width" },
     ["<C-l>"] = { "<C-w>>", "Increase width" },
     -- Buffers
-    ["<Tab>"] = { '<cmd>BufferLineCycleNext<CR>', "Next buffer", opts = { noremap = true, silent = true } },
-    ["<S-Tab>"] = { '<cmd>BufferLineCyclePrev<CR>', "Prev buffer", opts = { noremap = true, silent = true } },
+    -- ["<Tab>"] = { '<cmd>BufferLineCycleNext<CR>', "Next buffer", opts = { noremap = true, silent = true } },
+    -- ["<S-Tab>"] = { '<cmd>BufferLineCyclePrev<CR>', "Prev buffer", opts = { noremap = true, silent = true } },
     -- Neotree
     ["<leader>st"] = { "<cmd> Neotree toggle <CR>", "Toggle neotree" },
     ["<leader>ft"] = { "<cmd> Neotree <CR>", "Focus neotree" },
@@ -68,6 +68,7 @@ local M = {
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
     ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "Show keys" },
     ["<leader>tr"] = { "<cmd> Telescope resume <CR>", "Resume telescope search" },
+    ["<leader>tp"] = { "<cmd> Telescope pickers <CR>", "Search last pickers" },
     ["<leader>fs"] = { "<cmd> Telescope grep_string <CR>", "Grep string" },
     -- Telescope undo
     ["<leader>ut"] = { "<cmd>Telescope undo<CR>", "Toggle undotree" },
@@ -232,12 +233,12 @@ local M = {
     -- Go to config
     ["<leader>cf"] = { function()
       local config_path = vim.fn.stdpath('config')
-      vim.cmd('cd ' .. config_path)
+      vim.cmd('tcd ' .. config_path)
     end, "Go to Neovim config" },
     -- Go to plugin files
     ["<leader>cp"] = { function()
       local data_path = vim.fn.stdpath('data')
-      vim.cmd('cd ' .. data_path .. '/lazy')
+      vim.cmd('tcd ' .. data_path .. '/lazy')
     end, "Go to plugin files" }
   },
   i = {

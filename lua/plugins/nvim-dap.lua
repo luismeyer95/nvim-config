@@ -15,13 +15,6 @@ return {
     {
       "rcarriga/nvim-dap-ui",
       opts = { floating = { border = "rounded" } },
-      config = function(_, opts)
-        local dap, dapui = require "dap", require "dapui"
-        dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
-        dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
-        dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
-        dapui.setup(opts)
-      end,
     },
   },
   config = function(_, opts)
@@ -30,7 +23,7 @@ return {
     -- Setup signs
 
     local signs = {
-      { name = "DapStopped",             text = "", texthl = "DiagnosticWarn" },
+      { name = "DapStopped",             text = " ", texthl = "DiagnosticWarn" },
       { name = "DapBreakpoint",          text = "", texthl = "DiagnosticInfo" },
       { name = "DapBreakpointRejected",  text = "", texthl = "DiagnosticError" },
       { name = "DapBreakpointCondition", text = "", texthl = "DiagnosticInfo" },
@@ -49,7 +42,7 @@ return {
       name = 'lldb',
     }
 
-    dap.adapters.coreclr    = {
+    dap.adapters.netcoredbg    = {
       type = 'executable',
       command = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg"),
       args = { '--interpreter=vscode' }
@@ -78,7 +71,7 @@ return {
 
     dap.configurations.cs   = {
       {
-        type = "coreclr",
+        type = "netcoredbg",
         name = "launch - netcoredbg",
         request = "launch",
         program = function()

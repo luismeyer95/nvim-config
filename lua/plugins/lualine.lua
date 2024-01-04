@@ -7,10 +7,10 @@ return {
       lualine_c = {
         {
           function()
-            return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
+            return vim.fn.fnamemodify(vim.fn.getcwd(0, 0), ':~')
           end,
           color = "Directory",
-          icon = '',
+          icon = ' '
         },
         {
           'filetype',

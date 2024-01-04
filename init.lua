@@ -1,6 +1,8 @@
 require("config.options")
 require("config.lazy")
+require("config.commands")
 
+-- setup keymaps
 local keymaps = require("config.keymaps")
 for mode, mode_values in pairs(keymaps) do
   for keybind, mapping_info in pairs(mode_values) do
@@ -12,4 +14,5 @@ for mode, mode_values in pairs(keymaps) do
   end
 end
 
+-- setup colorscheme
 vim.cmd("colorscheme rose-pine")

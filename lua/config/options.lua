@@ -3,11 +3,13 @@
 -------------------------------------------------------------------------------
 
 vim.g.mapleader = " "
+vim.g.netrw_keepdir = 0
 
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false
 vim.opt.scrolloff = 15
 vim.opt.cursorline = true
+vim.opt.swapfile = false
 
 vim.opt.clipboard = "unnamedplus"
 -- vim.opt.cursorline = true

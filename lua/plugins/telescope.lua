@@ -21,9 +21,9 @@ local M = {
               ["cd"] = function(prompt_bufnr)
                 local selection = require("telescope.actions.state").get_selected_entry()
                 local dir = vim.fn.fnamemodify(selection.path, ":p:h")
-                require("telescope.actions").close(prompt_bufnr)
-                vim.cmd(string.format("silent cd %s", dir))
-              end
+                actions.close(prompt_bufnr)
+                vim.cmd(string.format("silent tcd %s", dir))
+              end,
             }
           }
         },
@@ -43,7 +43,10 @@ local M = {
         }
       },
       defaults = {
-        cache_picker = true,
+        cache_picker = {
+          num_pickers = 30,
+          limit_entries = 1000
+        },
         vimgrep_arguments = {
           "rg",
           "-L",
@@ -71,7 +74,7 @@ local M = {
           preview_cutoff = 120,
         },
         prompt_prefix = " ⬢  ",
-        mappings = { i = { ["<esc>"] = actions.close } },
+        mappings = { i = { ["<esc>"] = actions.close }, n = { ["q"] = actions.close } },
       },
       extensions = {
         fzf = {

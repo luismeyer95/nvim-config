@@ -9,6 +9,12 @@ return {
       }
     }
   },
+  config = function(_, opts)
+    require("flash").setup(opts)
+
+    -- changes label highlights to be BOLD black on cream
+    vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#00000f", bg = "#e2d4b7", bold = true })
+  end,
   keys = {
     {
       "s",

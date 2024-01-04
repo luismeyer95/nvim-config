@@ -20,6 +20,7 @@ return {
           end,
         }),
         require("neotest-dotnet")({
+          loglevel = 1,
           -- Extra arguments for nvim-dap configuration
           -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
           dap = { justMyCode = false },
