@@ -6,22 +6,22 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
       "Hoffs/omnisharp-extended-lsp.nvim",
-      "folke/neodev.nvim"
+      "folke/neodev.nvim",
     },
     config = function(_, _)
-      local utils = require("utils")
-      local mason_lspconfig = require("mason-lspconfig")
-      local lspconfig = require("lspconfig")
-      local lsp_utils = require("plugins.lsp.lsp-utils")
+      local utils = require "utils"
+      local mason_lspconfig = require "mason-lspconfig"
+      local lspconfig = require "lspconfig"
+      local lsp_utils = require "plugins.lsp.lsp-utils"
 
-      vim.diagnostic.config({
+      vim.diagnostic.config {
         virtual_text = {
           prefix = "●",
           source = true,
         },
         signs = true,
         underline = true,
-      })
+      }
 
       ---- sign column
       local signs = require("utils").lsp_signs
@@ -31,42 +31,44 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
 
-
-      mason_lspconfig.setup({
+      mason_lspconfig.setup {
         ensure_installed = utils.lsp_servers,
-      })
+      }
 
-      mason_lspconfig.setup_handlers({
+      mason_lspconfig.setup_handlers {
         function(server_name)
-          lspconfig[server_name].setup({
-            on_attach = lsp_utils.on_attach,
-            capabilities = lsp_utils.capabilities,
-          })
+          -- typescript-tools.lua takes care of setting up LSP itself
+          if server_name ~= "tsserver" then
+            lspconfig[server_name].setup {
+              on_attach = lsp_utils.on_attach,
+              capabilities = lsp_utils.capabilities,
+            }
+          end
         end,
-      })
+      }
 
-      lspconfig.lua_ls.setup({
+      lspconfig.lua_ls.setup {
         on_attach = lsp_utils.on_attach,
         capabilities = lsp_utils.capabilities,
         settings = {
           Lua = {
             diagnostics = {
-              globals = { 'vim' }
+              globals = { "vim" },
             },
             completion = {
-              callSnippet = "Replace"
-            }
-          }
-        }
-      })
+              callSnippet = "Replace",
+            },
+          },
+        },
+      }
 
-      lspconfig.omnisharp.setup({
+      lspconfig.omnisharp.setup {
         on_attach = lsp_utils.on_attach,
         capabilities = lsp_utils.capabilities,
         handlers = {
-          ["textDocument/definition"] = require('omnisharp_extended').handler,
-        }
-      })
+          ["textDocument/definition"] = require("omnisharp_extended").handler,
+        },
+      }
     end,
   },
   {
@@ -87,15 +89,13 @@ return {
     },
     config = function(_, opts)
       require("mason").setup(opts)
-      local utils = require("utils")
-      local mr = require("mason-registry")
+      local utils = require "utils"
+      local mr = require "mason-registry"
       local packages = utils.mason_packages
       local function ensure_installed()
         for _, package in ipairs(packages) do
           local p = mr.get_package(package)
-          if not p:is_installed() then
-            p:install()
-          end
+          if not p:is_installed() then p:install() end
         end
       end
       if mr.refresh then

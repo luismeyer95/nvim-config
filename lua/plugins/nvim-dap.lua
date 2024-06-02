@@ -15,6 +15,7 @@ return {
     {
       "rcarriga/nvim-dap-ui",
       opts = { floating = { border = "rounded" } },
+      dependencies = { "nvim-neotest/nvim-nio" }
     },
   },
   config = function(_, opts)
