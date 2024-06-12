@@ -1,9 +1,9 @@
-require("config.options")
-require("config.lazy")
-require("config.commands")
+require "config.options"
+require "config.lazy"
+require "config.commands"
 
 -- setup keymaps
-local keymaps = require("config.keymaps")
+local keymaps = require "config.keymaps"
 for mode, mode_values in pairs(keymaps) do
   for keybind, mapping_info in pairs(mode_values) do
     -- merge default + user opts
@@ -15,4 +15,4 @@ for mode, mode_values in pairs(keymaps) do
 end
 
 -- setup colorscheme
-vim.cmd("colorscheme rose-pine")
+vim.cmd "colorscheme tokyonight-night"
