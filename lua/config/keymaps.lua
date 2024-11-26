@@ -254,6 +254,10 @@ local M = {
   },
   v = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
+    ["<leader>ca"] = {
+      function() vim.lsp.buf.code_action({ apply = true }) end,
+      "LSP code_action",
+    },
   },
 }
 

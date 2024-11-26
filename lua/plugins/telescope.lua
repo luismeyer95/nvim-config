@@ -2,7 +2,7 @@ local M = {
   "nvim-telescope/telescope.nvim",
   lazy = false,
   dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    { "nvim-telescope/telescope-fzf-native.nvim",  build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
     { "debugloop/telescope-undo.nvim" }
@@ -47,6 +47,7 @@ local M = {
           num_pickers = 30,
           limit_entries = 1000
         },
+        path_display = { "smart" },
         vimgrep_arguments = {
           "rg",
           "-L",

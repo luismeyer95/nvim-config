@@ -23,5 +23,4 @@ return {
       }
     },
   },
-  version = "v3.*",
 }

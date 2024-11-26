@@ -14,6 +14,8 @@ return {
       local lspconfig = require "lspconfig"
       local lsp_utils = require "plugins.lsp.lsp-utils"
 
+      vim.lsp.set_log_level("debug")
+
       vim.diagnostic.config {
         virtual_text = {
           prefix = "●",
@@ -37,13 +39,10 @@ return {
 
       mason_lspconfig.setup_handlers {
         function(server_name)
-          -- typescript-tools.lua takes care of setting up LSP itself
-          if server_name ~= "tsserver" then
-            lspconfig[server_name].setup {
-              on_attach = lsp_utils.on_attach,
-              capabilities = lsp_utils.capabilities,
-            }
-          end
+          lspconfig[server_name].setup {
+            on_attach = lsp_utils.on_attach,
+            capabilities = lsp_utils.capabilities,
+          }
         end,
       }
 
@@ -61,6 +60,26 @@ return {
           },
         },
       }
+
+      lspconfig.vtsls.setup({
+        on_attach = function(client, bufnr)
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end,
+        capabilities = lsp_utils.capabilities,
+        settings = {
+          typescript = {
+            inlayHints = {
+              parameterNames = { enabled = "literals" },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              enumMemberValues = { enabled = true },
+            }
+          },
+
+        }
+      })
 
       lspconfig.omnisharp.setup {
         on_attach = lsp_utils.on_attach,

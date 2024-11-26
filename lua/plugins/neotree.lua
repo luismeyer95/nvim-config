@@ -1,6 +1,5 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
   lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -11,6 +10,7 @@ return {
     filesystem = {
       group_empty_dirs = false,
       hijack_netrw_behavior = "open_default",
+      bind_to_cwd = false,
     },
     window = {
       position = "float",
