@@ -15,20 +15,20 @@ return {
     {
       "rcarriga/nvim-dap-ui",
       opts = { floating = { border = "rounded" } },
-      dependencies = { "nvim-neotest/nvim-nio" }
+      dependencies = { "nvim-neotest/nvim-nio" },
     },
   },
   config = function(_, opts)
-    local dap = require('dap')
+    local dap = require "dap"
 
     -- Setup signs
 
     local signs = {
-      { name = "DapStopped",             text = " ", texthl = "DiagnosticWarn" },
-      { name = "DapBreakpoint",          text = "", texthl = "DiagnosticInfo" },
-      { name = "DapBreakpointRejected",  text = "", texthl = "DiagnosticError" },
+      { name = "DapStopped", text = " ", texthl = "DiagnosticWarn" },
+      { name = "DapBreakpoint", text = "", texthl = "DiagnosticInfo" },
+      { name = "DapBreakpointRejected", text = "", texthl = "DiagnosticError" },
       { name = "DapBreakpointCondition", text = "", texthl = "DiagnosticInfo" },
-      { name = "DapLogPoint",            text = ".>",  texthl = "DiagnosticInfo" },
+      { name = "DapLogPoint", text = ".>", texthl = "DiagnosticInfo" },
     }
 
     for _, sign in ipairs(signs) do
@@ -37,20 +37,31 @@ return {
 
     -- Setup adapters
 
-    dap.adapters.lldb       = {
-      type = 'executable',
+    dap.adapters.lldb = {
+      type = "executable",
+      -- TODO: replace hardcoded path with configurable
       command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
-      name = 'lldb',
+      name = "lldb",
     }
 
-    dap.adapters.netcoredbg    = {
-      type = 'executable',
-      command = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg"),
-      args = { '--interpreter=vscode' }
+    dap.adapters.codelldb = {
+      type = "server",
+      port = "${port}",
+      executable = {
+        -- TODO: replace hardcoded args with configurable
+        command = "/Users/luismeyer/.local/share/nvim/mason/bin/codelldb",
+        args = { "--port", "${port}" },
+      },
     }
 
-    dap.adapters.nlua       = function(callback, config)
-      callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+    dap.adapters.netcoredbg = {
+      type = "executable",
+      command = vim.fn.resolve(vim.fn.stdpath "data" .. "/mason/packages/netcoredbg/netcoredbg"),
+      args = { "--interpreter=vscode" },
+    }
+
+    dap.adapters.nlua = function(callback, config)
+      callback { type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 }
     end
 
     -- Setup configurations
@@ -58,19 +69,17 @@ return {
     dap.configurations.rust = {
       {
         name = "Rust debug",
-        type = "lldb",
+        type = "codelldb",
         request = "launch",
-        program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = true,
+        program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
         showDisassembly = "never",
-        sourceLanguages = { 'rust' }
+        sourceLanguages = { "rust" },
       },
     }
 
-    dap.configurations.cs   = {
+    dap.configurations.cs = {
       {
         type = "netcoredbg",
         name = "launch - netcoredbg",
@@ -78,24 +87,25 @@ return {
         program = function()
           return coroutine.create(function(coro)
             local picker = require("utils.option-picker").option_picker
-            picker("Select Project",
-              { "bash", "-c", "find . -name \"*.csproj\" -exec dirname {} \\;" },
-              function(project)
-                print("Selected project: " .. project)
-                picker("Select DLL", { "bash", "-c", "find " .. project .. " -name \"*.dll\"" },
-                  function(dll) coroutine.resume(coro, dll) end)
-              end)
+            picker("Select Project", { "bash", "-c", 'find . -name "*.csproj" -exec dirname {} \\;' }, function(project)
+              print("Selected project: " .. project)
+              picker(
+                "Select DLL",
+                { "bash", "-c", "find " .. project .. ' -name "*.dll"' },
+                function(dll) coroutine.resume(coro, dll) end
+              )
+            end)
           end)
-        end
+        end,
       },
     }
 
-    dap.configurations.lua  = {
+    dap.configurations.lua = {
       {
-        type = 'nlua',
-        request = 'attach',
+        type = "nlua",
+        request = "attach",
         name = "Attach to running Neovim instance",
-      }
+      },
     }
-  end
+  end,
 }

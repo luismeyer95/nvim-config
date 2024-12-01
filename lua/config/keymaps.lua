@@ -57,6 +57,11 @@ local M = {
     ["<leader>tr"] = { "<cmd> Telescope resume <CR>", "Resume telescope search" },
     ["<leader>tp"] = { "<cmd> Telescope pickers <CR>", "Search last pickers" },
     ["<leader>fs"] = { "<cmd> Telescope grep_string <CR>", "Grep string" },
+    -- Inlay hints
+    ["<leader>ih"] = {
+      function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
+      "Toggle inlay hints",
+    },
     -- Telescope undo
     ["<leader>ut"] = { "<cmd>Telescope undo<CR>", "Toggle undotree" },
     -- Telescope clipboard
@@ -179,6 +184,7 @@ local M = {
     ["<leader>dr"] = { function() require("dap").restart_frame() end, "Restart" },
     ["<leader>dR"] = { function() require("dap").repl.toggle() end, "Toggle REPL" },
     ["<leader>du"] = { function() require("dapui").toggle() end, "Toggle Debugger UI" },
+    ["<leader>de"] = { function() require("dapui").eval() end, "Eval Expression (Debugger UI)" },
     ["<leader>dh"] = { function() require("dap.ui.widgets").hover() end, "Debugger Hover" },
     -- Neotest
     ["<leader>tw"] = { function() require("neotest").summary.toggle() end, "Toggle Neotest" },
@@ -233,7 +239,7 @@ local M = {
       function()
         local cmp = require "cmp"
         if cmp.visible() then
-          cmp.abort()
+          vim.schedule(cmp.abort)
           return ""
         else
           return vim.fn["codeium#Accept"]()
@@ -255,7 +261,7 @@ local M = {
   v = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
     ["<leader>ca"] = {
-      function() vim.lsp.buf.code_action({ apply = true }) end,
+      function() vim.lsp.buf.code_action { apply = true } end,
       "LSP code_action",
     },
   },

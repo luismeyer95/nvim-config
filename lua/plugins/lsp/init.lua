@@ -14,7 +14,7 @@ return {
       local lspconfig = require "lspconfig"
       local lsp_utils = require "plugins.lsp.lsp-utils"
 
-      vim.lsp.set_log_level("debug")
+      vim.lsp.set_log_level "debug"
 
       vim.diagnostic.config {
         virtual_text = {
@@ -61,10 +61,8 @@ return {
         },
       }
 
-      lspconfig.vtsls.setup({
-        on_attach = function(client, bufnr)
-          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-        end,
+      lspconfig.vtsls.setup {
+        on_attach = function(client, bufnr) vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) end,
         capabilities = lsp_utils.capabilities,
         settings = {
           typescript = {
@@ -75,11 +73,10 @@ return {
               propertyDeclarationTypes = { enabled = true },
               functionLikeReturnTypes = { enabled = true },
               enumMemberValues = { enabled = true },
-            }
+            },
           },
-
-        }
-      })
+        },
+      }
 
       lspconfig.omnisharp.setup {
         on_attach = lsp_utils.on_attach,
