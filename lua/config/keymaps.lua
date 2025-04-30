@@ -128,11 +128,7 @@ local M = {
     ["<leader>gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP declaration" },
     ["<leader>gd"] = {
       function()
-        if vim.bo.filetype == "cs" then
-          require("omnisharp_extended").telescope_lsp_definitions()
-        else
-          require("telescope.builtin").lsp_definitions()
-        end
+        require("telescope.builtin").lsp_definitions()
       end,
       "LSP definition",
     },
@@ -238,15 +234,15 @@ local M = {
     ["<C-l>"] = {
       function()
         local cmp = require "cmp"
+        local suggestion = require('supermaven-nvim.completion_preview')
+
         if cmp.visible() then
           vim.schedule(cmp.abort)
-          return ""
-        else
-          return vim.fn["codeium#Accept"]()
+        elseif suggestion.has_suggestion() then
+          vim.schedule(suggestion.on_accept_suggestion)
         end
       end,
       "Codeium complete",
-      opts = { expr = true },
     },
   },
   t = {
@@ -260,6 +256,7 @@ local M = {
   },
   v = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
+    ["<S-p>"] = { '"0p', "Paste last yank" },
     ["<leader>ca"] = {
       function() vim.lsp.buf.code_action { apply = true } end,
       "LSP code_action",

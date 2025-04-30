@@ -70,7 +70,6 @@ M.lsp_servers = {
   "cssls",
   "html",
   "pyright",
-  "omnisharp",
 }
 
 return M

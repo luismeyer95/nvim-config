@@ -23,4 +23,5 @@ return {
     "handlebars",
     "hbs",
   },
+  event = { "BufReadPre", "BufNewFile" },
 }

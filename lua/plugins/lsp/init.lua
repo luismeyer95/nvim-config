@@ -5,7 +5,6 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
-      "Hoffs/omnisharp-extended-lsp.nvim",
       "folke/neodev.nvim",
     },
     config = function(_, _)
@@ -62,7 +61,7 @@ return {
       }
 
       lspconfig.vtsls.setup {
-        on_attach = function(client, bufnr) vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) end,
+        on_attach = lsp_utils.on_attach,
         capabilities = lsp_utils.capabilities,
         settings = {
           typescript = {
@@ -75,14 +74,6 @@ return {
               enumMemberValues = { enabled = true },
             },
           },
-        },
-      }
-
-      lspconfig.omnisharp.setup {
-        on_attach = lsp_utils.on_attach,
-        capabilities = lsp_utils.capabilities,
-        handlers = {
-          ["textDocument/definition"] = require("omnisharp_extended").handler,
         },
       }
     end,
