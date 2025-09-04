@@ -4,6 +4,11 @@ return {
   config = function()
     require("noice").setup {
       -- add any options here
+      lsp = {
+        progress = {
+          enabled = false,
+        }
+      }
     }
   end,
   dependencies = {

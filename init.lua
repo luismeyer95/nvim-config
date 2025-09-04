@@ -15,4 +15,4 @@ for mode, mode_values in pairs(keymaps) do
 end
 
 -- setup colorscheme
-vim.cmd "colorscheme base16-ayu-dark"
+vim.cmd "colorscheme rose-pine"
