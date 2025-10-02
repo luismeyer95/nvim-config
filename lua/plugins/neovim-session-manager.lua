@@ -1,6 +1,6 @@
 return {
   "Shatur/neovim-session-manager",
-  lazy = false,
+  event = "VeryLazy",
   keys = {
     { "<leader>Sl", "<cmd>SessionManager! load_last_session<cr>",        desc = "Load last session" },
     { "<leader>Ss", "<cmd>SessionManager! save_current_session<cr>",     desc = "Save this session" },
