@@ -17,7 +17,18 @@ return {
     },
     autopairs = { enable = true },
     indent = { enable = true },
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "rust", "typescript", "markdown", "markdown_inline", "c_sharp" },
+    ensure_installed = {
+      "c",
+      "lua",
+      "vim",
+      "vimdoc",
+      "rust",
+      "typescript",
+      "tsx",
+      "markdown",
+      "markdown_inline",
+      "c_sharp",
+    },
     sync_install = true,
     ignore_install = {}, -- List of parsers to ignore installation
     refactor = {
@@ -31,9 +42,9 @@ return {
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "<leader>ss",   -- set to `false` to disable one of the mappings
-        node_incremental = "<leader>so", -- scope out
-        node_decremental = "<leader>si", -- scope in
+        init_selection = "<leader>q", -- set to `false` to disable one of the mappings
+        node_incremental = "q", -- scope out
+        node_decremental = "w", -- scope in
         scope_incremental = "grc",
       },
     },

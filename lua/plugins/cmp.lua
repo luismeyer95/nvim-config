@@ -9,19 +9,17 @@ local M = {
     "hrsh7th/cmp-path",
     "L3MON4D3/LuaSnip",
     "windwp/nvim-autopairs",
-    "onsails/lspkind.nvim"
+    "onsails/lspkind.nvim",
   },
   opts = function()
-    local cmp = require("cmp")
+    local cmp = require "cmp"
 
     return {
       completion = {
         completeopt = "menu,menuone",
       },
       snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end,
+        expand = function(args) require("luasnip").lsp_expand(args.body) end,
       },
       mapping = {
         ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -38,8 +36,7 @@ local M = {
           if cmp.visible() then
             cmp.select_next_item()
           elseif require("luasnip").expand_or_jumpable() then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-              "")
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
           else
             fallback()
           end
@@ -81,7 +78,7 @@ local M = {
     }
   end,
   config = function(_, opts)
-    local cmp = require("cmp")
+    local cmp = require "cmp"
     cmp.setup(opts)
   end,
 }
