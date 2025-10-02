@@ -45,31 +45,4 @@ M.lsp_kinds = {
   Null = " ",
 }
 
-M.mason_packages = {
-  "bash-language-server",
-  "clang-format",
-  "clangd",
-  "codelldb",
-  "html-lsp",
-  "json-lsp",
-  "lua-language-server",
-  "prettier",
-  "stylua",
-  "vtsls",
-  "yaml-language-server",
-  "editorconfig-checker",
-}
-
-M.lsp_servers = {
-  "clangd",
-  "vtsls",
-  "lua_ls",
-  "bashls",
-  "yamlls",
-  "jsonls",
-  "cssls",
-  "html",
-  "pyright",
-}
-
 return M
