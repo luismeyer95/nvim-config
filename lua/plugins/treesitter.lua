@@ -43,8 +43,8 @@ return {
       enable = true,
       keymaps = {
         init_selection = "<leader>q", -- set to `false` to disable one of the mappings
-        node_incremental = "q", -- scope out
-        node_decremental = "w", -- scope in
+        node_incremental = "q",       -- scope out
+        node_decremental = "w",       -- scope in
         scope_incremental = "grc",
       },
     },

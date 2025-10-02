@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     signs = {
       add = { text = "│" },
@@ -13,7 +13,7 @@ return {
   },
   config = function(_, opts)
     require("gitsigns").setup(opts)
-    vim.cmd "highlight GitSignsAdd guifg=#00ff00 guibg=NONE gui=NONE" -- green foreground
+    vim.cmd "highlight GitSignsAdd guifg=#00ff00 guibg=NONE gui=NONE"    -- green foreground
     vim.cmd "highlight GitSignsDelete guifg=#ff0000 guibg=NONE gui=NONE" -- red foreground
   end,
 }

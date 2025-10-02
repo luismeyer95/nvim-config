@@ -1,6 +1,6 @@
 return {
   "stevearc/conform.nvim",
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
@@ -14,6 +14,7 @@ return {
       svelte = { "prettierd", "prettier", stop_after_first = true },
       html = { "prettierd", "prettier", stop_after_first = true },
       css = { "prettierd", "prettier", stop_after_first = true },
+      -- cs = { "csharpier" }
     },
     format_after_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end

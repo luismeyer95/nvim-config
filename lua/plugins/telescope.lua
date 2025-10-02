@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  lazy = false,
+  event = "VeryLazy",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim",  build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },

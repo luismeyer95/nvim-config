@@ -1,1 +1,1 @@
-return { 'jbyuki/one-small-step-for-vimkind', lazy = false }
+return { 'jbyuki/one-small-step-for-vimkind', event = 'VeryLazy' }

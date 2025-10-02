@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  lazy = false,
+  event = "VeryLazy",
   config = function()
     require("noice").setup {
       -- add any options here

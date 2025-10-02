@@ -15,13 +15,14 @@ local M = {
     ["<C-h>"] = { "<C-w><", "Decrease width" },
     ["<M-Right>"] = { "<C-w>>", "Increase width" },
     ["<C-l>"] = { "<C-w>>", "Increase width" },
-    -- Buffers
-    -- ["<Tab>"] = { '<cmd>BufferLineCycleNext<CR>', "Next buffer", opts = { noremap = true, silent = true } },
-    -- ["<S-Tab>"] = { '<cmd>BufferLineCyclePrev<CR>', "Prev buffer", opts = { noremap = true, silent = true } },
+
     -- Neotree
-    ["<leader>st"] = { "<cmd> Neotree toggle <CR>", "Toggle neotree" },
+    ["<leader>st"] = { function()
+      vim.cmd("Neotree dir=" .. vim.fn.getcwd(-1, -1))
+    end, "Open neotree (cwd)" },
     ["<leader>ft"] = { "<cmd> Neotree <CR>", "Focus neotree" },
     ["<leader>rf"] = { "<cmd> Neotree reveal <CR>", "Reveal file in neotree" },
+
     -- Save + format
     ["<leader>sf"] = { "<cmd>lua vim.lsp.buf.format { async = false }<cr> <cmd>w<cr>", "Format + save" },
     -- Better window navigation

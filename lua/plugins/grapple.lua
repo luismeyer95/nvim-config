@@ -19,5 +19,6 @@ return {
     ---@type string | boolean
     quick_select = "1234567890",
   },
-  lazy = false
+  event = "VeryLazy",
 }
+

@@ -1,6 +1,6 @@
 return {
   "rgroli/other.nvim",
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     mappings = {
       "angular",

@@ -6,8 +6,8 @@ return {
       disable_italics = true,
     },
   },
-  { "kartikp10/noctis.nvim",  name = "noctis",    dependencies = { "rktjmp/lush.nvim" }, lazy = false },
-  { "haishanh/night-owl.vim", name = "night-owl", lazy = false },
+  { "kartikp10/noctis.nvim",  name = "noctis",    dependencies = { "rktjmp/lush.nvim" }, event = "VeryLazy" },
+  { "haishanh/night-owl.vim", name = "night-owl", event = "VeryLazy" },
   {
     "bluz71/vim-nightfly-colors",
     name = "nightfly",

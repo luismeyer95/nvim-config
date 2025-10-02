@@ -11,6 +11,7 @@ return {
       group_empty_dirs = false,
       hijack_netrw_behavior = "open_default",
       bind_to_cwd = false,
+
     },
     window = {
       position = "float",

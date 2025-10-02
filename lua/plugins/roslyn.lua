@@ -1,6 +1,5 @@
 return {
   "seblyng/roslyn.nvim",
-  lazy = false,
   ft = "cs",
   opts = {
     config = {
@@ -9,7 +8,7 @@ return {
         "--logLevel=Information",
         "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
         "--stdio",
-      }
+      },
     },
   },
 }
